@@ -94,6 +94,9 @@ class RingAPI {
         $data['api_version'] = $this->_apiVersion;
         $data['auth_token']  = $this->_authToken;
         $response = $this->_httpCall('GET', $this->_urlDings, $data);
+        if (!is_array($response)) {
+            return;
+        }
 
         foreach($response as $status) {
             foreach($status as $k => $v) {
